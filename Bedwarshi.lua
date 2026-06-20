@@ -1,4 +1,4 @@
--- LocalScript
+
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -13,7 +13,6 @@ local NotificationController = Flamework.resolveDependency(
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
--- GUI
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "CommandBarGui"
 screenGui.ResetOnSpawn = false
@@ -45,7 +44,6 @@ textBox.TextXAlignment = Enum.TextXAlignment.Left
 textBox.PlaceholderText = ""
 textBox.ClearTextOnFocus = false
 
--- Notification system (slides in from top-right)
 local notifGui = Instance.new("ScreenGui")
 notifGui.Name = "NotificationGui"
 notifGui.ResetOnSpawn = false
@@ -97,7 +95,6 @@ local function showError(message)
 	end)
 end
 
--- Config: key to open the command bar
 local openKeyCode = Enum.KeyCode.Equals
 
 local function toggleGui()
@@ -108,7 +105,6 @@ local function toggleGui()
 	end
 end
 
--- Toggle on key (only when GUI is closed)
 UserInputService.InputBegan:Connect(function(input, gp)
 	if gp then return end
 	if screenGui.Enabled then return end
@@ -118,7 +114,6 @@ UserInputService.InputBegan:Connect(function(input, gp)
 	end
 end)
 
--- Command handling
 local validCommands = {
 	changekeybind = true,
 	announce = true,
@@ -150,7 +145,7 @@ local function handleCommand(cmd)
 			return
 		end
 
-				local fullMessage = '<font color="rgb(75, 0, 130)"><b>[THEMAGICPISTON]</b></font> : <b>' .. message .. '</b>'
+				local fullMessage = '<font color="rgb(75, 0, 130)"><b>[THEMAGICPISTON]</b></font>: <b>' .. message .. '</b>'
 
 		pcall(function()
 			NotificationController:sendInfoNotification({
@@ -195,7 +190,6 @@ textBox.FocusLost:Connect(function(enterPressed)
 	end
 end)
 
--- LocalScript
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -205,13 +199,10 @@ local function Color3ToHex(r, g, b)
 	return string.lower(string.format("#%02X%02X%02X", r, g, b))
 end
 
--- ===== Settings =====
 local TAG_TEXT = "THEMAGICPISTON"
 
--- Dark purple (you can tweak these HSV values if you want a slightly different purple)
 local ColorHSV = { Hue = 0.78, Sat = 0.60, Val = 0.45 }
 
--- =====================
 
 local old, old2
 local tagRenderConn
@@ -304,7 +295,7 @@ local function RemoveTagEffect()
 	old2 = nil
 end
 
--- Apply (wait for Tags to exist)
+
 if lplr:FindFirstChild("Tags") then
 	CompleteTagEffect()
 else
@@ -315,4 +306,3 @@ else
 	end)
 end
 
--- Optional: if you ever want it removed, call RemoveTagEffect()
