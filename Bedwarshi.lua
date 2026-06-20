@@ -145,7 +145,7 @@ local function handleCommand(cmd)
 			return
 		end
 
-				local fullMessage = '<font color="rgb(75, 0, 130)"><b>[THEMAGICPISTON]</b></font>: <b>' .. message .. '</b>'
+				local fullMessage = '<font color="rgb(75, 0, 130)"><b>[THEMAGICPISTON]</b></font> : <b>' .. message .. '</b>'
 
 		pcall(function()
 			NotificationController:sendInfoNotification({
